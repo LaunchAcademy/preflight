@@ -12,3 +12,10 @@ gemspec
 
 # To use debugger
 # gem 'debugger'
+
+gem 'omniauth-crew-check',
+  path: '../omniauth-crew-check'
+  
+group :development do
+  gem 'pry'
+end
