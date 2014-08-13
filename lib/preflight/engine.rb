@@ -1,11 +1,18 @@
 require 'omniauth/builder'
 require 'omniauth-crew-check'
+require 'better_date_picker'
 
 OmniAuth.config.path_prefix = '/preflight/auth'
 
 module Preflight
   class Engine < ::Rails::Engine
     isolate_namespace Preflight
+
+    config.generators do |g|
+      g.test_framework      :rspec,        :fixture => false
+      g.assets false
+      g.helper false
+    end
 
     initializer 'omniauth' do |app|
       app.middleware.use OmniAuth::Builder do
