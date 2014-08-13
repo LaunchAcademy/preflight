@@ -2,17 +2,9 @@ PATH
   remote: .
   specs:
     preflight (0.0.1)
-      dotenv-rails
       omniauth-crew-check
       rails (~> 4.1.4)
       warden
-
-PATH
-  remote: ../omniauth-crew-check
-  specs:
-    omniauth-crew-check (0.0.1)
-      octokit
-      omniauth-github
 
 GEM
   remote: https://rubygems.org/
@@ -92,6 +84,9 @@ GEM
     omniauth (1.2.2)
       hashie (>= 1.2, < 4)
       rack (~> 1.0)
+    omniauth-crew-check (0.0.3)
+      octokit
+      omniauth-github
     omniauth-github (1.1.2)
       omniauth (~> 1.0)
       omniauth-oauth2 (~> 1.1)
@@ -172,8 +167,8 @@ PLATFORMS
 
 DEPENDENCIES
   capybara
+  dotenv-rails
   factory_girl
-  omniauth-crew-check!
   pg
   preflight!
   pry
