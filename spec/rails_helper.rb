@@ -7,8 +7,6 @@ require 'capybara/rspec'
 require 'spec_helper'
 
 Dir[File.join(File.dirname(__FILE__), "support/**/*.rb")].each do |f|
-  puts "gets here"
-  puts f
   require File.expand_path(f)
 end
 
