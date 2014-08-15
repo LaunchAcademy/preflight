@@ -1,6 +1,9 @@
 require 'omniauth/builder'
 require 'omniauth-crew-check'
-require 'better_date_picker'
+require 'slugged'
+require 'simple_form'
+
+require 'preflight/responder'
 
 OmniAuth.config.path_prefix = '/preflight/auth'
 
@@ -25,6 +28,10 @@ module Preflight
           :role_required => false,
           :scope => ['user']
       end
+    end
+
+    initializer 'better_date_picker' do
+      require 'better_date_picker'
     end
   end
 end

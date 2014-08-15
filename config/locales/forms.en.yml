@@ -1,0 +1,10 @@
+en:
+  simple_form:
+    labels:
+      campaign:
+        started_at_date: 'Starts'
+        ended_at_date: 'Ends'
+    # hints:
+    #   defaults:
+    #     username: 'User name to sign in.'
+    #     password: 'No special characters, please.'

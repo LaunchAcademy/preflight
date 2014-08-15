@@ -11,9 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20140813021713) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "preflight_campaigns", force: true do |t|
+    t.string   "title",       null: false
+    t.string   "cached_slug", null: false
+    t.datetime "started_at",  null: false
+    t.datetime "ended_at"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "preflight_campaigns", ["cached_slug"], name: "index_preflight_campaigns_on_cached_slug", unique: true, using: :btree
+  add_index "preflight_campaigns", ["started_at", "ended_at"], name: "index_preflight_campaigns_on_started_at_and_ended_at", using: :btree
+  add_index "preflight_campaigns", ["title"], name: "index_preflight_campaigns_on_title", unique: true, using: :btree
 
 end

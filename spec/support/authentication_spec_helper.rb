@@ -25,11 +25,12 @@ module AuthenticationSpecHelper
       }
     }
 
-    OmniAuth.config.mock_auth[:github] = info
+    OmniAuth.config.mock_auth[provider] = info
   end
 
   def sign_in_as(role, provider = :crew_check)
     stub_auth_response(role, provider)
     visit "/preflight/auth/#{provider}"
+    expect(page).to have_content('You are now signed in.')
   end
 end

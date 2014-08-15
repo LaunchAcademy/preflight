@@ -1,0 +1,7 @@
+ en:
+   flash:
+      preflight:
+        admin:
+          campaigns:
+            create:
+              notice: "Campaign created."
