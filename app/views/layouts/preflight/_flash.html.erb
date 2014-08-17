@@ -1,0 +1,6 @@
+<%- flash.each do |key, value| %>
+<div data-alert="" class="alert-box row <%= key %> <%= flash_class_map[key] %>">
+  <%= flash[key] %>
+  <a href="#" class="close">&times;</a>
+</div>
+<%- end -%>

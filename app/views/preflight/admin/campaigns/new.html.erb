@@ -1,10 +1,14 @@
-<h1>Add a new campaign</h1>
+<div class="row">
+  <div class="large-12 columns">
+    <h1>Add a new campaign</h1>
 
-<%= simple_form_for [:admin, @campaign] do |f| %>
-  <%= f.input :title %>
-  <%= f.input :description %>
-  <%= f.input :started_at_date %>
-  <%= f.input :ended_at_date %>
+    <%= simple_form_for [:admin, @campaign] do |f| %>
+      <%= f.input :title %>
+      <%= f.input :description %>
+      <%= f.input :started_at_date %>
+      <%= f.input :ended_at_date %>
 
-  <%= f.button :submit %>
-<% end %>
+      <%= f.button :submit %>
+    <% end %>
+  </div>
+</div>

@@ -2,6 +2,7 @@ module Preflight
   module Admin
     class CampaignsController < ApplicationController
       respond_to :html
+      layout 'preflight/admin'
       before_filter :require_admin!
 
       def new
