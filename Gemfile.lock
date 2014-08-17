@@ -3,6 +3,7 @@ PATH
   specs:
     preflight (0.0.1)
       better_date_picker
+      foundation-rails
       omniauth-crew-check
       rails (~> 4.1.4)
       responders
@@ -65,6 +66,9 @@ GEM
       activesupport (>= 3.0.0)
     faraday (0.9.0)
       multipart-post (>= 1.2, < 3)
+    foundation-rails (5.3.0.1)
+      railties (>= 3.1.0)
+      sass (>= 3.2.0)
     hashie (3.2.0)
     hike (1.2.3)
     i18n (0.6.11)
@@ -149,6 +153,7 @@ GEM
       rspec-mocks (~> 3.0.0)
       rspec-support (~> 3.0.0)
     rspec-support (3.0.4)
+    sass (3.2.19)
     sawyer (0.5.4)
       addressable (~> 2.3.5)
       faraday (~> 0.8, < 0.10)

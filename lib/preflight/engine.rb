@@ -2,6 +2,7 @@ require 'omniauth/builder'
 require 'omniauth-crew-check'
 require 'slugged'
 require 'simple_form'
+require 'foundation-rails'
 
 require 'preflight/responder'
 
