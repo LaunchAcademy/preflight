@@ -7,17 +7,10 @@ module Preflight
     end
 
     def create
-      @subscriber = Subscriber.new(subscriber_params) do |sub|
-        sub.ip_address = request.remote_ip
-      end
-      
-      if campaign.present?
-        @subscriber.subscriptions.build do |s|
-          s.campaign = campaign
-        end
-      end
+      opt_in = Preflight::OptIn.new(subscriber_params, campaign, request)
 
-      @subscriber.save
+      opt_in.save
+      @subscriber = opt_in.subscriber
       respond_with(@subscriber, location: root_path)
     end
 

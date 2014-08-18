@@ -13,5 +13,12 @@ module Preflight
     #https://github.com/plataformatec/devise/blob/master/lib/devise.rb#L123
     validates :email, uniqueness: true,
       format: /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/
+
+    def subscribe_to!(campaign)
+      subscription = subscriptions.find_or_initialize_by({
+        campaign_id: campaign.id
+      })
+      subscription.save!
+    end
   end
 end
