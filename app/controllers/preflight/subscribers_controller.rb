@@ -7,10 +7,12 @@ module Preflight
     end
 
     def create
-      @subscriber = Subscriber.new(subscriber_params)
+      @subscriber = Subscriber.new(subscriber_params) do |sub|
+        sub.ip_address = request.remote_ip
+      end
+      
       if campaign.present?
         @subscriber.subscriptions.build do |s|
-          s.subscriber = @subscriber
           s.campaign = campaign
         end
       end

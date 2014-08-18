@@ -3,6 +3,7 @@ module Preflight
     has_many :subscriptions,
       class_name: 'Preflight::CampaignSubscription',
       foreign_key: 'subscriber_id',
+      inverse_of: :subscriber,
       dependent: :destroy
 
     has_many :campaigns,
