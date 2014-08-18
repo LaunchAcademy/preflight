@@ -32,4 +32,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'factory_girl'
   s.add_development_dependency 'dotenv-rails'
   s.add_development_dependency 'valid_attribute'
+  s.add_development_dependency 'shoulda-matchers'
 end

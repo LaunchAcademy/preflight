@@ -12,7 +12,9 @@ gemspec
 
 # To use debugger
 # gem 'debugger'
-  
+
 group :development do
   gem 'pry'
+  gem 'guard-rspec'
+  gem 'rb-fsevent'
 end

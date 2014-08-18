@@ -4,6 +4,7 @@ require File.join(File.dirname(__FILE__), "dummy/config/environment")
 
 require 'rspec/rails'
 require 'capybara/rspec'
+require 'shoulda/matchers'
 require 'spec_helper'
 
 Dir[File.join(File.dirname(__FILE__), "support/**/*.rb")].each do |f|

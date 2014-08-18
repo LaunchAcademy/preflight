@@ -1,9 +1,14 @@
 en:
+  helpers:
+    submit:
+      subscriber:
+        create: 'Subscribe'
   simple_form:
     labels:
       campaign:
         started_at_date: 'Starts'
         ended_at_date: 'Ends'
+
     # hints:
     #   defaults:
     #     username: 'User name to sign in.'

@@ -1,6 +1,9 @@
  en:
    flash:
       preflight:
+        subscribers:
+          create:
+            notice: "Thanks! We will keep you posted."
         admin:
           campaigns:
             create:

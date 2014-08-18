@@ -11,10 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140813021713) do
+ActiveRecord::Schema.define(version: 20140818153335) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "preflight_campaign_subscriptions", force: true do |t|
+    t.integer  "subscriber_id", null: false
+    t.integer  "campaign_id",   null: false
+    t.integer  "referrer_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "preflight_campaign_subscriptions", ["referrer_id"], name: "index_preflight_campaign_subscriptions_on_referrer_id", using: :btree
+  add_index "preflight_campaign_subscriptions", ["subscriber_id", "campaign_id"], name: "campaign_subscriptions_uniq", unique: true, using: :btree
 
   create_table "preflight_campaigns", force: true do |t|
     t.string   "title",       null: false
@@ -29,5 +40,14 @@ ActiveRecord::Schema.define(version: 20140813021713) do
   add_index "preflight_campaigns", ["cached_slug"], name: "index_preflight_campaigns_on_cached_slug", unique: true, using: :btree
   add_index "preflight_campaigns", ["started_at", "ended_at"], name: "index_preflight_campaigns_on_started_at_and_ended_at", using: :btree
   add_index "preflight_campaigns", ["title"], name: "index_preflight_campaigns_on_title", unique: true, using: :btree
+
+  create_table "preflight_subscribers", force: true do |t|
+    t.string   "email",      null: false
+    t.string   "ip_address"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "preflight_subscribers", ["email"], name: "index_preflight_subscribers_on_email", unique: true, using: :btree
 
 end

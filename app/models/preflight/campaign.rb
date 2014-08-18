@@ -18,5 +18,12 @@ module Preflight
         end
       end
     end
+
+    class << self
+      def active
+        where('started_at <= :now AND (ended_at >= :now OR ended_at IS NULL)',
+          now: Time.now)
+      end
+    end
   end
 end

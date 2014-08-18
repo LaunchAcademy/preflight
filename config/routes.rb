@@ -5,6 +5,12 @@ Preflight::Engine.routes.draw do
   namespace :admin do
     resources :campaigns
   end
-  
-  root 'sign_ups#new'
+
+  resources :subscribers, only: [:new, :create]
+
+  resources :campaigns, only: [] do
+    resources :subscribers, only: [:new, :create]
+  end
+
+  root 'subscribers#new'
 end
