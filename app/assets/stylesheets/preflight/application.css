@@ -12,6 +12,7 @@
  *
  *= require 'foundation'
  *= require 'time_picker'
+ *= require 'font_awesome'
  *= require_tree .
  *= require_self
  */
