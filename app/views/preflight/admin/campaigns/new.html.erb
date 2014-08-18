@@ -2,7 +2,7 @@
   <div class="large-12 columns">
     <h1>Add a new campaign</h1>
 
-    <%= simple_form_for [:admin, @campaign] do |f| %>
+    <%= preflight_form_for [:admin, @campaign], html: {novalidate: 'novalidate'} do |f| %>
       <%= f.input :title %>
       <%= f.input :description %>
       <%= f.input :started_at_date %>
