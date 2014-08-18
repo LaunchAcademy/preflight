@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <%= stylesheet_link_tag    "preflight/application", media: "all" %>
-  <%= javascript_include_tag "preflight/application" %>
 
   <%= javascript_include_tag "vendor/modernizr" %>
 
@@ -14,24 +13,27 @@
 </head>
 <body>
 
-<nav class="top-bar" data-topbar>
-  <ul class="title-area">
-    <li class="name">
-      <h1><%= link_to 'Preflight', root_path %></h1>
-    </li>
-    <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
-  </ul>
-
-  <section class="top-bar-section">
-    <ul class="left">
-      <li><%= link_to 'Campaigns', admin_campaigns_path %></li>
+  <nav class="top-bar" data-topbar>
+    <ul class="title-area">
+      <li class="name">
+        <h1><%= link_to 'Preflight', root_path %></h1>
+      </li>
+      <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
     </ul>
-  </section>
-</nav>
 
-<%= render "layouts/preflight/flash" %>
+    <section class="top-bar-section">
+      <ul class="left">
+        <li><%= link_to 'Campaigns', admin_campaigns_path %></li>
+      </ul>
+    </section>
+  </nav>
 
-<%= yield %>
+  <%= render "layouts/preflight/flash" %>
+
+  <%= yield %>
+
+  <%= javascript_include_tag "preflight/application" %>
+  <%= yield :extra_footer %>
 
 </body>
 </html>

@@ -2,7 +2,7 @@
   <div class="large-12 columns">
     <h1>Add a new campaign</h1>
 
-    <%= preflight_form_for [:admin, @campaign], html: {novalidate: 'novalidate'} do |f| %>
+    <%= preflight_form_for [:admin, @campaign] do |f| %>
       <%= f.input :title %>
       <%= f.input :description %>
       <%= f.input :started_at_date %>
@@ -12,3 +12,11 @@
     <% end %>
   </div>
 </div>
+
+<%= content_for :extra_footer do %>
+  <script type="text/javascript">
+    $(function(){
+      new Preflight.Views.Campaigns.Form('#new_campaign');
+    });
+  </script>
+<%- end -%>

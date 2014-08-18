@@ -13,6 +13,9 @@
 //= require jquery.1.11
 //= require time_picker
 //= require foundation
+//= require ./preflight
+//= require_tree ./components
+//= require_tree ./views
 //= require_tree .
 
 $(function(){
