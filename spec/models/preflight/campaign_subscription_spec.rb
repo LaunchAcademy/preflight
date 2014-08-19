@@ -21,5 +21,21 @@ module Preflight
       expect(other_sub).to_not be_valid
       expect(other_sub.errors[:campaign]).to_not be_blank
     end
+
+    it 'requires a unique invitation token per campaign' do
+      sub = FactoryGirl.create(:preflight_campaign_subscription)
+      other_sub = FactoryGirl.build(:preflight_campaign_subscription,
+        campaign: sub.campaign,
+        invitation_token: sub.invitation_token)
+      expect(other_sub).to_not be_valid
+      expect(other_sub.errors[:invitation_token]).to_not be_blank
+    end
+
+    it 'generates a unique invitation_code' do
+      sub = FactoryGirl.create(:preflight_campaign_subscription,
+        invitation_token: nil)
+      sub.save!
+      expect(sub.invitation_token).to_not be_blank
+    end
   end
 end

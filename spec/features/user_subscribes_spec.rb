@@ -10,6 +10,7 @@ feature 'user subscribes', %Q{
   # * I must specify a valid email
   # * If no active campaign is specified, I can still subscribe
   # * If there is no reward system in place, I get confirmation of subscribing
+  # * Each campaign subscription has a unique code
 
   scenario 'subscribe to active campaign with no rewards' do
     campaign = FactoryGirl.create(:preflight_campaign)
@@ -19,7 +20,10 @@ feature 'user subscribes', %Q{
 
     expect(page).to have_content("Thanks! We will keep you posted.")
 
-    expect(Preflight::Subscriber.last.campaigns).to include(campaign)
+    last_subscription = Preflight::CampaignSubscription.last
+    expect(last_subscription.campaign).to eq(campaign)
+    expect(last_subscription.invitation_token).to_not be_blank
+
   end
 
   scenario 'invalid email address' do

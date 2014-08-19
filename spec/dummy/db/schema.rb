@@ -11,19 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140818153335) do
+ActiveRecord::Schema.define(version: 20140819013350) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "preflight_campaign_subscriptions", force: true do |t|
-    t.integer  "subscriber_id", null: false
-    t.integer  "campaign_id",   null: false
+    t.integer  "subscriber_id",    null: false
+    t.integer  "campaign_id",      null: false
     t.integer  "referrer_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "invitation_token", null: false
   end
 
+  add_index "preflight_campaign_subscriptions", ["invitation_token", "campaign_id"], name: "invitation_token_uniq", unique: true, using: :btree
   add_index "preflight_campaign_subscriptions", ["referrer_id"], name: "index_preflight_campaign_subscriptions_on_referrer_id", using: :btree
   add_index "preflight_campaign_subscriptions", ["subscriber_id", "campaign_id"], name: "campaign_subscriptions_uniq", unique: true, using: :btree
 

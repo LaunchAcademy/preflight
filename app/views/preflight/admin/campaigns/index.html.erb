@@ -17,7 +17,7 @@
         <tbody>
           <%- @campaigns.each do |campaign| %>
             <tr>
-              <td><%= campaign.title %></td>
+              <td><%= link_to campaign.title, admin_campaign_path(campaign) %></td>
               <td><%= campaign.started_at %></td>
               <td><%= campaign.ended_at %></td>
               <td><%= link_to 'Show', admin_campaign_path(campaign) %></td>
