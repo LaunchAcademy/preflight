@@ -1,9 +1,7 @@
 module Preflight
   module Admin
-    class CampaignsController < ApplicationController
+    class CampaignsController < AdminController
       respond_to :html
-      layout 'preflight/admin'
-      before_filter :require_admin!
 
       def new
         @campaign = Campaign.new
@@ -16,20 +14,17 @@ module Preflight
       end
 
       def index
+        @campaigns = Campaign.page(params[:page])
+      end
+
+      def show
+        @campaign = Campaign.find_using_slug!(params[:id])
       end
 
       protected
       def campaign_params
         params.require(:campaign).permit(:title, :description, :ended_at_date,
           :started_at_date)
-      end
-
-      def require_admin!
-        roles = session[:preflight_roles]
-        if !roles.kind_of?(Array) || !roles.include?('admin')
-          redirect_to root_path, alert: 'Access Denied'
-          return false
-        end
       end
     end
   end

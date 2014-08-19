@@ -21,6 +21,7 @@ module Preflight
 
     def campaign
       if params[:campaign_id]
+        @campaign ||= Campaign.find_using_slug!(params[:id])
       else
         @campaign ||= Campaign.active.first
       end

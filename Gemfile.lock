@@ -4,6 +4,7 @@ PATH
     preflight (0.0.1)
       better_date_picker
       foundation-rails
+      kaminari
       omniauth-crew-check
       rails (~> 4.1.4)
       responders
@@ -87,6 +88,9 @@ GEM
     i18n (0.6.11)
     json (1.8.1)
     jwt (1.0.0)
+    kaminari (0.16.1)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
     listen (2.7.9)
       celluloid (>= 0.15.2)
       rb-fsevent (>= 0.9.3)

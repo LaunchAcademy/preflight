@@ -1,5 +1,30 @@
 <div class="row">
   <div class="large-12 columns">
     <h1>Campaigns</h1>
+    <%= link_to content_tag(:i, '', class: 'fa fa-plus') + ' Add a new campaign',
+      new_admin_campaign_path, class: 'button small success' %>
+
+    <%- if @campaigns.present? -%>
+      <table>
+        <thead>
+          <tr>
+            <th>Campaign Name</th>
+            <th>Start</th>
+            <th>End</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <%- @campaigns.each do |campaign| %>
+            <tr>
+              <td><%= campaign.title %></td>
+              <td><%= campaign.started_at %></td>
+              <td><%= campaign.ended_at %></td>
+              <td><%= link_to 'Show', admin_campaign_path(campaign) %></td>
+            </tr>
+          <%- end -%>
+        </tbody>
+      </table>
+    <%- end -%>
   </div>
 </div>

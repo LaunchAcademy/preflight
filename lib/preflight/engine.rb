@@ -3,6 +3,7 @@ require 'omniauth-crew-check'
 require 'slugged'
 require 'simple_form'
 require 'foundation-rails'
+require 'kaminari'
 
 require 'preflight/responder'
 

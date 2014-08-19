@@ -2,8 +2,8 @@ Preflight::Engine.routes.draw do
   get '/auth/:provider/callback' => 'sessions#create'
   post '/auth/:provider/callback' => 'sessions#create'
 
-  namespace :admin do
-    resources :campaigns
+  resource :admin, only: :show, controller: 'admins' do
+    resources :campaigns, controller: 'admin/campaigns'
   end
 
   resources :subscribers, only: [:new, :create]
