@@ -14,10 +14,15 @@ module Preflight
     validates :email, uniqueness: true,
       format: /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/
 
-    def subscribe_to!(campaign)
+    def subscribe_to!(campaign, referrer = nil)
       subscription = subscriptions.find_or_initialize_by({
         campaign_id: campaign.id
       })
+
+      if referrer.present?
+        subscription.referrer = referrer
+      end
+
       subscription.save!
     end
   end

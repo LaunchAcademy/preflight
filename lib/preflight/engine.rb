@@ -6,6 +6,7 @@ require 'foundation-rails'
 require 'kaminari'
 
 require 'preflight/responder'
+require 'preflight/receiving_controller'
 
 OmniAuth.config.path_prefix = '/preflight/auth'
 

@@ -18,6 +18,10 @@ module Preflight
 
     before_create :generate_invitation_token
 
+    def to_param
+      self.invitation_token
+    end
+
     class << self
       #adapted from Devise:
       #https://github.com/plataformatec/devise/blob/master/lib/devise.rb#L476

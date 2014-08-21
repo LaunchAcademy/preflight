@@ -7,7 +7,11 @@ module Preflight
     end
 
     def create
-      opt_in = Preflight::OptIn.new(subscriber_params, campaign, request)
+      opt_in = Preflight::OptIn.new(
+        subscriber_params,
+        campaign,
+        request,
+        cookies.signed)
 
       opt_in.save
       @subscriber = opt_in.subscriber

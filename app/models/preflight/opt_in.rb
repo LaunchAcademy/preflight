@@ -2,23 +2,26 @@ module Preflight
   class OptIn
     attr_reader :subscriber
 
-    def initialize(params, campaign, request = nil)
+    def initialize(params, campaign, request = nil, cookies = nil)
       if params[:email].present?
         @subscriber = Subscriber.find_or_initialize_by(email: params[:email])
       end
 
-      if request.present?
+      if request
         @subscriber.ip_address = request.remote_ip
       end
 
+      cookie_val = cookies ? cookies[Preflight.cookie_key] : nil
+      if cookie_val
+        @referrer = Preflight::CampaignSubscription.where(id: cookie_val).first
+      end
       @campaign = campaign
-
     end
 
     def save
       @subscriber.save.tap do |res|
         if res && @campaign.present?
-          @subscriber.subscribe_to!(@campaign)
+          @subscriber.subscribe_to!(@campaign, @referrer)
         end
       end
     end

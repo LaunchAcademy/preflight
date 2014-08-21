@@ -8,4 +8,12 @@ module Preflight
   def self.configure(&block)
     configuration.update(&block)
   end
+
+  def self.param_key
+    :ref
+  end
+
+  def self.cookie_key
+    :p_referring_id
+  end
 end
