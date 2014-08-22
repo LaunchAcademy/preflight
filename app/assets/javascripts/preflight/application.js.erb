@@ -13,10 +13,14 @@
 //= require jquery.1.11
 //= require time_picker
 //= require foundation
+//= require zero_clipboard
 //= require ./preflight
 //= require_tree ./components
 //= require_tree ./views
 //= require_tree .
+//= depend_on_asset "ZeroClipboard.swf"
+
+ZeroClipboard.config( { swfPath: '<%= asset_path 'ZeroClipboard.swf' %>' }  );
 
 $(function(){
   $(document).foundation();

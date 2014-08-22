@@ -38,5 +38,9 @@ module Preflight
     initializer 'better_date_picker' do
       require 'better_date_picker'
     end
+
+    initializer "precompile zero clipboard" do |app|
+      app.config.assets.precompile += %w(ZeroClipboard.swf)
+    end
   end
 end

@@ -2,7 +2,17 @@
   <div class="large-12 columns">
     <h1>Share with your friends</h1>
 
-    <%= text_field_tag "share_url", referral_url(@subscription.invitation_token) %>
+    <div id="share-input" class="row collapse">
+      <div class="small-10 columns">
+        <%= text_field_tag "share_url", referral_url(@subscription.invitation_token) %>
+      </div>
+      <div class="small-2 columns">
+        <a href="#" class="button postfix" style="width: 100%">
+          <i class="fa fa-clipboard"></i>
+        </a>
+      </div>
+    </div>
+
     <%= Preflight::Facebook::ShareLink.new(
       content_tag(:i, '', class: 'fa fa-facebook-square') + ' Facebook',
       referral_url(@subscription.invitation_token),
@@ -27,8 +37,7 @@
 <%= content_for :extra_footer do %>
   <script type="text/javascript">
     $(function(){
-      new Preflight.Views.Facebook.
-        Initializer();
+      new Preflight.Views.Facebook.Initializer();
 
       new Preflight.Views.Facebook.ShareLink('.facebook-share-link');
 
@@ -37,6 +46,8 @@
 
       new Preflight.Views.LinkedIn.Initializer();
       new Preflight.Views.LinkedIn.ShareLink('.linkedin-share-link')
+
+      new Preflight.Views.CampaignSubscriptions.ShareInput('#share-input');
     });
   </script>
 <%- end %>
