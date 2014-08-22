@@ -41,6 +41,17 @@ describe Preflight::Configuration do
       expect(Preflight.configuration.facebook_app_id).to eq(app_id)
     end
   end
+
+  it 'has a twitter handle' do
+    handle = 'launchacademy_'
+    with_temp_config do
+      Preflight.configure do |config|
+        config.twitter_handle = handle
+      end
+
+      expect(Preflight.configuration.twitter_handle).to eq(handle)
+    end
+  end
   def with_temp_config(&block)
     old_config = Preflight.configuration.dup
     block.call

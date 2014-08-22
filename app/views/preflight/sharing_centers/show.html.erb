@@ -3,11 +3,16 @@
     <h1>Share with your friends</h1>
 
     <%= text_field_tag "share_url", referral_url(@subscription.invitation_token) %>
-    <%= Facebook::ShareLink.new(
+    <%= Preflight::Facebook::ShareLink.new(
       content_tag(:i, '', class: 'fa fa-facebook-square') + ' Facebook',
       referral_url(@subscription.invitation_token),
       request.url,
       class: 'facebook-share-link').html %>
+    <%= Preflight::Twitter::TweetLink.new(
+      content_tag(:i, '', class: 'fa fa-twitter') + ' Twitter',
+      referral_url(@subscription.invitation_token),
+      class: 'twitter-share-link'
+    ).html %>
 
   </div>
 </div>
@@ -20,6 +25,9 @@
           Initializer('<%= fb_app_id %>');
 
         new Preflight.Views.Facebook.ShareLink('.facebook-share-link');
+
+        new Preflight.Views.Twitter.Initializer();
+        new Preflight.Views.Twitter.TweetLink('.twitter-share-link');
       });
     </script>
   <%- end -%>

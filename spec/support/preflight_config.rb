@@ -9,4 +9,5 @@ Preflight.configure do |config|
     'launchacademy/admins'
   ]
   config.facebook_app_id = ENV['FACEBOOK_APP_ID']
+  config.twitter_handle = ENV['TWITTER_HANDLE']
 end
