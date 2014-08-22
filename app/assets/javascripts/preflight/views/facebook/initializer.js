@@ -1,7 +1,7 @@
-Preflight.Views.Facebook.Initializer = function(appId){
+Preflight.Views.Facebook.Initializer = function(){
   window.fbAsyncInit = function() {
     FB.init({
-      appId      : appId,
+      appId      : Preflight.facebookAppId,
       xfbml      : true,
       cookie     : true,
       status     : true,

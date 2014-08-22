@@ -6,6 +6,8 @@ module Preflight
       @subscription = remembered_subscription
       if !@subscription
         redirect_to root_path
+      else
+        @campaign = @subscription.campaign
       end
     end
 

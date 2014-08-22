@@ -52,6 +52,18 @@ describe Preflight::Configuration do
       expect(Preflight.configuration.twitter_handle).to eq(handle)
     end
   end
+
+  it 'has a linked in api key' do
+    key = 'some_key'
+    with_temp_config do
+      Preflight.configure do |config|
+        config.linked_in_api_key = key
+      end
+
+      expect(Preflight.configuration.linked_in_api_key).to eq(key)
+    end
+  end
+
   def with_temp_config(&block)
     old_config = Preflight.configuration.dup
     block.call

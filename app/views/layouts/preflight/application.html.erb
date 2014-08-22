@@ -19,6 +19,8 @@
 <%= javascript_include_tag "preflight/application" %>
 <script type="text/javascript">
   Preflight.env = '<%= Rails.env %>';
+  Preflight.linkedInApiKey = '<%= Preflight.configuration.linked_in_api_key %>';
+  Preflight.facebookAppId = '<%= Preflight.configuration.facebook_app_id %>';
 </script>
 
 <%= yield :extra_footer %>

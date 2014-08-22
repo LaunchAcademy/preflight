@@ -14,21 +14,29 @@
       class: 'twitter-share-link'
     ).html %>
 
+    <%= Preflight::LinkedIn::ShareLink.new(
+      content_tag(:i, '', class: 'fa fa-linkedin-square') + ' LinkedIn',
+      referral_url(@subscription.invitation_token),
+      @campaign.title,
+      @campaign.description,
+      class: 'linkedin-share-link'
+    ).html %>
   </div>
 </div>
 
 <%= content_for :extra_footer do %>
-  <%- if fb_app_id = Preflight.configuration.facebook_app_id -%>
-    <script type="text/javascript">
-      $(function(){
-        new Preflight.Views.Facebook.
-          Initializer('<%= fb_app_id %>');
+  <script type="text/javascript">
+    $(function(){
+      new Preflight.Views.Facebook.
+        Initializer();
 
-        new Preflight.Views.Facebook.ShareLink('.facebook-share-link');
+      new Preflight.Views.Facebook.ShareLink('.facebook-share-link');
 
-        new Preflight.Views.Twitter.Initializer();
-        new Preflight.Views.Twitter.TweetLink('.twitter-share-link');
-      });
-    </script>
-  <%- end -%>
+      new Preflight.Views.Twitter.Initializer();
+      new Preflight.Views.Twitter.TweetLink('.twitter-share-link');
+
+      new Preflight.Views.LinkedIn.Initializer();
+      new Preflight.Views.LinkedIn.ShareLink('.linkedin-share-link')
+    });
+  </script>
 <%- end %>
