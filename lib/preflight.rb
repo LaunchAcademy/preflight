@@ -13,7 +13,12 @@ module Preflight
     :ref
   end
 
-  def self.cookie_key
+  def self.referring_cookie_key
     :p_referring_id
   end
+
+  def self.subscription_cookie_key
+    :p_subscription_id
+  end
+
 end

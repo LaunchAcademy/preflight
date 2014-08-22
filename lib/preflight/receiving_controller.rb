@@ -9,7 +9,7 @@ module Preflight
     protected
     def receive_referral
       if !referring_subscription.nil?
-        cookies.signed[Preflight.cookie_key] = referral_cookie_values
+        cookies.signed[Preflight.referring_cookie_key] = referral_cookie_values
         return true
       end
 
@@ -33,8 +33,7 @@ module Preflight
     def referral_cookie_values
       {
         value: referring_subscription.id,
-        expires: 45.days.from_now,
-        httponly: true
+        expires: 45.days.from_now
       }
     end
   end

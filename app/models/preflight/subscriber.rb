@@ -23,7 +23,9 @@ module Preflight
         subscription.referrer = referrer
       end
 
-      subscription.save!
+      subscription.tap do |sub|
+        sub.save!
+      end
     end
   end
 end

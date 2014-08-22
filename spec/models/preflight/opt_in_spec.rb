@@ -24,5 +24,12 @@ module Preflight
       expect(opt_in.save).to be(true)
       expect(subscriber.campaigns.count).to eq(1)
     end
+
+    it 'returns a subscription when a campaign is present' do
+
+      subscriber = FactoryGirl.create(:preflight_subscriber)
+      sub = subscriber.subscribe_to!(campaign)
+      expect(sub).to be_kind_of(Preflight::CampaignSubscription)
+    end
   end
 end

@@ -5,7 +5,7 @@ Preflight::Engine.routes.draw do
   resources :r,
     only: :show,
     controller: :referrals,
-    as: :referrals
+    as: :referral
 
 
   resource :admin, only: :show, controller: 'admins' do
@@ -17,6 +17,8 @@ Preflight::Engine.routes.draw do
   resources :campaigns, only: [] do
     resources :subscribers, only: [:new, :create]
   end
+
+  resource :sharing_center
 
   root 'subscribers#new'
 end
