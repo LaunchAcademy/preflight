@@ -6,6 +6,7 @@ Preflight.configure do |config|
   config.github_secret_key = ENV['GITHUB_SECRET_KEY']
   config.admin_teams = [
     'launchacademy/experience engineers',
-    'launchacademy/admins' 
+    'launchacademy/admins'
   ]
+  config.facebook_app_id = ENV['FACEBOOK_APP_ID']
 end

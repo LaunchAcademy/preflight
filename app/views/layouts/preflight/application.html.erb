@@ -7,13 +7,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <%= stylesheet_link_tag    "preflight/application", media: "all" %>
-  <%= javascript_include_tag "preflight/application" %>
   <%= csrf_meta_tags %>
+
+  <%= yield :extra_header %>
 </head>
 <body>
 
 <%= render "layouts/preflight/flash" %>
 <%= yield %>
 
+<%= javascript_include_tag "preflight/application" %>
+<script type="text/javascript">
+  Preflight.env = '<%= Rails.env %>';
+</script>
+
+<%= yield :extra_footer %>
 </body>
 </html>

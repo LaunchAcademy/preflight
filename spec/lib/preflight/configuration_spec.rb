@@ -31,6 +31,16 @@ describe Preflight::Configuration do
     end
   end
 
+  it 'has a fb app id' do
+    app_id = 'fb_whatevah'
+    with_temp_config do
+      Preflight.configure do |config|
+        config.facebook_app_id = app_id
+      end
+
+      expect(Preflight.configuration.facebook_app_id).to eq(app_id)
+    end
+  end
   def with_temp_config(&block)
     old_config = Preflight.configuration.dup
     block.call

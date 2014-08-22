@@ -1,12 +1,22 @@
-require 'preflight/engine'
 require 'preflight/configuration'
+
+if defined?(Rails)
+  require 'preflight/engine'
+end
 
 module Preflight
   @@configuration = Preflight::Configuration.new
-  mattr_accessor :configuration
+
+  def self.configuration
+    @@configuration
+  end
+
+  def self.configuration=(configuration)
+    @@configuration = configuration
+  end
 
   def self.configure(&block)
-    configuration.update(&block)
+    @@configuration.update(&block)
   end
 
   def self.param_key
@@ -20,5 +30,4 @@ module Preflight
   def self.subscription_cookie_key
     :p_subscription_id
   end
-
 end

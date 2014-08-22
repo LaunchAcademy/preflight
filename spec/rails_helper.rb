@@ -7,6 +7,8 @@ require 'capybara/rspec'
 require 'shoulda/matchers'
 require 'spec_helper'
 
+require 'preflight/engine'
+
 Dir[File.join(File.dirname(__FILE__), "support/**/*.rb")].each do |f|
   require File.expand_path(f)
 end

@@ -14,6 +14,8 @@ module Preflight
   class Engine < ::Rails::Engine
     isolate_namespace Preflight
 
+    config.autoload_paths << "#{config.root}/app/view_objects"
+
     config.generators do |g|
       g.test_framework      :rspec,        :fixture => false
       g.assets false

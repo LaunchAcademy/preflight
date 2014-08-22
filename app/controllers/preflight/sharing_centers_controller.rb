@@ -4,12 +4,15 @@ module Preflight
 
     def show
       @subscription = remembered_subscription
+      if !@subscription
+        redirect_to root_path
+      end
     end
 
     protected
     def remembered_subscription
       @remembered_subscription ||= Preflight::CampaignSubscription.
-        find(subscription_id)
+        where(id: subscription_id).first
     end
 
     def subscription_id

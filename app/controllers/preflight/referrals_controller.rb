@@ -5,7 +5,9 @@ module Preflight
       if referring_subscription
         respond_to do |format|
           new_path = new_campaign_subscriber_path(referring_subscription.campaign)
-          format.html { redirect_to new_path }
+          format.html do
+            redirect_to new_path
+          end
         end
       else
         respond_to do |format|
