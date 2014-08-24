@@ -19,6 +19,7 @@ Preflight::Engine.routes.draw do
   end
 
   resource :sharing_center
+  resources :shares, only: :create
 
   root 'subscribers#new'
 end

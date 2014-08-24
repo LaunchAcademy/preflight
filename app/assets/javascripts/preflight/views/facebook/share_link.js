@@ -11,7 +11,7 @@ Preflight.Views.Facebook.ShareLink = function(el){
       return this.$el.attr('data-share-url');
     }
   }
-  
+
   this.handleClick = function(e){
     e.preventDefault();
     FB.ui({
@@ -19,8 +19,8 @@ Preflight.Views.Facebook.ShareLink = function(el){
       display: 'popup',
       href: this.shareUrl()
     }, function(response){
-
-    })
+      //returns an array when 'publish_actions' scope is not granted
+    });
   }
 
   this.$el.on('click', $.proxy(this.handleClick, this));

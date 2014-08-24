@@ -6,6 +6,10 @@ Preflight.Views.Twitter.TweetListener = function(){
   //event.data is not populated, so if we want more data, we'll have to
   //retrieve it via oauth or via the streaming api
   this.handleTweet = function(event){
+    var share = new Preflight.Models.Share({
+      provider: 'twitter'
+    });
+    share.save();
   }
 
   twttr.ready($.proxy(this.ready, this));

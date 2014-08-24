@@ -1,5 +1,6 @@
 Preflight = {
   Components: {},
+  Models: {},
   Views: {}
 };
 

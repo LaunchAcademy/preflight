@@ -5,6 +5,7 @@ module Preflight
     it { should belong_to(:campaign) }
     it { should belong_to(:subscriber) }
     it { should belong_to(:referrer) }
+    it { should have_many(:shares).dependent(:destroy) }
 
     it { should have_valid(:campaign).when(Preflight::Campaign.new)}
     it { should_not have_valid(:campaign).when(nil) }

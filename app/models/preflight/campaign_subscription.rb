@@ -7,6 +7,11 @@ module Preflight
       class_name: "Preflight::CampaignSubscription",
       foreign_key: "referrer_id"
 
+    has_many :shares,
+      class_name: "Preflight::Share",
+      foreign_key: "campaign_subscription_id",
+      dependent: :destroy
+
     validates :campaign,
       presence: true,
       uniqueness: {scope: :subscriber_id}
