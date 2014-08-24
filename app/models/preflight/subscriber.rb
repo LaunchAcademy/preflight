@@ -20,7 +20,7 @@ module Preflight
       })
 
       if referrer.present?
-        subscription.referrer = referrer
+        subscription.referrer ||= referrer
       end
 
       subscription.tap do |sub|
