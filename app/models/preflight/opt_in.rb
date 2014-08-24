@@ -22,12 +22,22 @@ module Preflight
     def save
       @subscriber.save.tap do |res|
         if res && @campaign.present?
+          @subscription = @subscriber.subscribe_to!(@campaign, @referrer)
           if @cookies
             @cookies.delete(Preflight.referring_cookie_key)
+            @cookies.signed[Preflight.subscription_cookie_key] =
+              subscription_cookie_values(@subscription)
           end
-          @subscription = @subscriber.subscribe_to!(@campaign, @referrer)
         end
       end
+    end
+
+    protected
+    def subscription_cookie_values(sub)
+      {
+        value: sub.id,
+        expires: 45.days.from_now
+      }
     end
   end
 end

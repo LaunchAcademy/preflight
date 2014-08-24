@@ -18,8 +18,6 @@ module Preflight
       @subscriber = opt_in.subscriber
       redir_path = root_path
       if sub = opt_in.subscription
-        cookies.signed[Preflight.subscription_cookie_key] =
-          subscription_cookie_values(sub)
         redir_path = sharing_center_path
       end
 
@@ -27,13 +25,6 @@ module Preflight
     end
 
     protected
-    def subscription_cookie_values(sub)
-      {
-        value: sub.id,
-        expires: 45.days.from_now
-      }
-    end
-
     def check_subscription
       if cookies.signed[Preflight.subscription_cookie_key]
         redirect_to sharing_center_path
