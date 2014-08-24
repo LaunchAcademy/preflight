@@ -12,7 +12,7 @@ module Preflight
         subscriber_params,
         campaign,
         request,
-        cookies.signed)
+        cookies)
 
       opt_in.save
       @subscriber = opt_in.subscriber

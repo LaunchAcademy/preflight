@@ -11,7 +11,8 @@ module Preflight
         @subscriber.ip_address = request.remote_ip
       end
 
-      cookie_val = cookies ? cookies[Preflight.referring_cookie_key] : nil
+      @cookies = cookies
+      cookie_val = cookies ? cookies.signed[Preflight.referring_cookie_key] : nil
       if cookie_val
         @referrer = Preflight::CampaignSubscription.where(id: cookie_val).first
       end
@@ -21,6 +22,9 @@ module Preflight
     def save
       @subscriber.save.tap do |res|
         if res && @campaign.present?
+          if @cookies
+            @cookies.delete(Preflight.referring_cookie_key)
+          end
           @subscription = @subscriber.subscribe_to!(@campaign, @referrer)
         end
       end
