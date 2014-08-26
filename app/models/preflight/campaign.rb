@@ -2,6 +2,12 @@ module Preflight
   class Campaign < ActiveRecord::Base
     is_sluggable :title, history: false
 
+    has_many :rewards,
+      -> { order(:rank) },
+      class_name: 'Preflight::Reward',
+      foreign_key: 'campaign_id',
+      dependent: :destroy
+
     include BetterDatePicker::Model
 
     better_date_picker :started_at

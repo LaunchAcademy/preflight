@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140822203657) do
+ActiveRecord::Schema.define(version: 20140825190210) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,20 @@ ActiveRecord::Schema.define(version: 20140822203657) do
   add_index "preflight_campaigns", ["cached_slug"], name: "index_preflight_campaigns_on_cached_slug", unique: true, using: :btree
   add_index "preflight_campaigns", ["started_at", "ended_at"], name: "index_preflight_campaigns_on_started_at_and_ended_at", using: :btree
   add_index "preflight_campaigns", ["title"], name: "index_preflight_campaigns_on_title", unique: true, using: :btree
+
+  create_table "preflight_rewards", force: true do |t|
+    t.integer  "campaign_id",     null: false
+    t.string   "title",           null: false
+    t.text     "description",     null: false
+    t.integer  "rank",            null: false
+    t.integer  "threshold_units", null: false
+    t.string   "threshold_type",  null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "preflight_rewards", ["campaign_id", "rank"], name: "index_preflight_rewards_on_campaign_id_and_rank", unique: true, using: :btree
+  add_index "preflight_rewards", ["campaign_id"], name: "index_preflight_rewards_on_campaign_id", using: :btree
 
   create_table "preflight_shares", force: true do |t|
     t.string   "provider",                 null: false

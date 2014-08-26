@@ -9,5 +9,10 @@ module Preflight
         'notice' => 'success'
       }
     end
+
+    def new_link_to(text, href, options = {})
+      link_to(content_tag(:i, '', class: 'fa fa-plus') + " #{text}",
+        href, {class: 'button small success'})
+    end
   end
 end

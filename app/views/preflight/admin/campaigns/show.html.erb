@@ -6,5 +6,34 @@
       <li class="current"><%= @campaign.title %></li>
     </ul>
     <h1><%= @campaign.title %></h1>
+
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-12 columns">
+    <h3>Rewards</h3>
+
+    <%= new_link_to 'New Reward', new_admin_campaign_reward_path(@campaign) %>
+
+    <%- if @campaign.rewards.present? -%>
+      <table>
+        <thead>
+          <th>Title</th>
+          <th>Threshold Type</th>
+          <th>Threshold Units</th>
+        </thead>
+
+        <tbody>
+          <%- @campaign.rewards.each do |reward| -%>
+            <tr>
+              <td><%= reward.title %></td>
+              <td><%= reward.threshold_type %></td>
+              <td><%= reward.threshold_units %></td>
+            </tr>
+          <%- end -%>
+        </tbody>
+      </table>
+    <%-end -%>
   </div>
 </div>

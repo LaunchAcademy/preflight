@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="large-12 columns">
+    <ul class="breadcrumbs">
+      <li><%= link_to 'Home', admin_path %></li>
+      <li><%= link_to 'Campaigns', admin_campaigns_path %></li>
+      <li><%= link_to @campaign.title, admin_campaign_path(@campaign) %></li>
+      <li class="current">New Reward</li>
+    </ul>
+
+    <h1>Create a reward for <%= @campaign.title %></h1>
+
+    <%= simple_form_for [:admin, @campaign, @reward] do |f| %>
+      <%= f.input :title %>
+      <%= f.input :description %>
+      <%= f.input :threshold_units %>
+      <%= f.input :rank %>
+
+      <%= f.button :submit %>
+    <%- end %>
+  </div>
+</div>

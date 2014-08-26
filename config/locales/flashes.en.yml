@@ -8,3 +8,6 @@
           campaigns:
             create:
               notice: "Campaign created."
+          rewards:
+            create:
+              notice: "Reward created."

@@ -1,8 +1,7 @@
 <div class="row">
   <div class="large-12 columns">
     <h1>Campaigns</h1>
-    <%= link_to content_tag(:i, '', class: 'fa fa-plus') + ' Add a new campaign',
-      new_admin_campaign_path, class: 'button small success' %>
+    <%= new_link_to 'Add a new campaign', new_admin_campaign_path %>
 
     <%- if @campaigns.present? -%>
       <table>

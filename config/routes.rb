@@ -9,7 +9,9 @@ Preflight::Engine.routes.draw do
 
 
   resource :admin, only: :show, controller: 'admins' do
-    resources :campaigns, controller: 'admin/campaigns'
+    resources :campaigns, controller: 'admin/campaigns' do
+      resources :rewards, controller: 'admin/rewards', only: [:new, :create]
+    end
   end
 
   resources :subscribers, only: [:new, :create]

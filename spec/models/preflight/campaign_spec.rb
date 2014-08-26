@@ -2,6 +2,8 @@ require 'rails_helper'
 
 module Preflight
   RSpec.describe Campaign, :type => :model do
+    it { should have_many(:rewards).dependent(:destroy) }
+
     it { should have_valid(:title).when('A title', 'Another title') }
     it { should_not have_valid(:title).when(nil, '') }
 

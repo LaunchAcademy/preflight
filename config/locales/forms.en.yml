@@ -8,6 +8,8 @@ en:
       campaign:
         started_at_date: 'Starts'
         ended_at_date: 'Ends'
+      reward:
+        threshold_units: 'Referral Threshold'
 
     # hints:
     #   defaults:
