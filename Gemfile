@@ -17,4 +17,5 @@ group :development do
   gem 'pry'
   gem 'guard-rspec'
   gem 'rb-fsevent'
+  gem 'launchy'
 end
