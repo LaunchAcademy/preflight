@@ -34,6 +34,15 @@
   </div>
 </div>
 
+<div class="row">
+  <div class="large-12 columns">
+    <%- reward_count = @subscription.rewards.count -%>
+    <%- if reward_count > 0 -%>
+      <p>You have earned <strong><%= reward_count %></strong> <%= "reward".pluralize(reward_count) %>!</p>
+    <%- end -%>
+  </div>
+</div>
+
 <%= content_for :extra_footer do %>
   <script type="text/javascript">
     $(function(){

@@ -16,4 +16,13 @@ FactoryGirl.define do
     association :campaign, factory: :preflight_campaign
     association :subscriber, factory: :preflight_subscriber
   end
+
+  factory :preflight_reward, class: Preflight::Reward do
+    association :campaign, factory: :preflight_campaign
+    sequence(:title) { |n| "Reward #{n}" }
+    description 'a reward for you'
+    sequence(:rank) { |n| n }
+    sequence(:threshold_units) {|n| n }
+    threshold_type 'campaign_subscription'
+  end
 end

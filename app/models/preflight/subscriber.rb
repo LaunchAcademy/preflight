@@ -19,12 +19,18 @@ module Preflight
         campaign_id: campaign.id
       })
 
-      if referrer.present?
-        subscription.referrer ||= referrer
+      referral = false
+      if referrer.present? && subscription.referrer_id.blank?
+        subscription.referrer = referrer
+        referral = true
       end
 
       subscription.tap do |sub|
         sub.save!
+
+        if referral
+          Preflight::RewardDispenserJob.enqueue(referrer.id)
+        end
       end
     end
   end

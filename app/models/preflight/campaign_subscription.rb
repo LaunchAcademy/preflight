@@ -7,10 +7,22 @@ module Preflight
       class_name: "Preflight::CampaignSubscription",
       foreign_key: "referrer_id"
 
+    has_many :referrals,
+      class_name: "Preflight::CampaignSubscription",
+      foreign_key: "referrer_id"
+
     has_many :shares,
       class_name: "Preflight::Share",
       foreign_key: "campaign_subscription_id",
       dependent: :destroy
+
+    has_many :reward_grants,
+      class_name: "Preflight::RewardGrant",
+      foreign_key: "campaign_subscription_id",
+      dependent: :destroy
+
+    has_many :rewards,
+      through: :reward_grants
 
     validates :campaign,
       presence: true,
