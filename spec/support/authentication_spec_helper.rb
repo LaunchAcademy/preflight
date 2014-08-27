@@ -18,7 +18,7 @@ module AuthenticationSpecHelper
       },
       'extra' => {
         'teams' => [],
-        'roles' => [role]
+        'roles' => [role.to_s]
       },
       'credentials' => {
         'token' => ENV['GITHUB_TOKEN']
