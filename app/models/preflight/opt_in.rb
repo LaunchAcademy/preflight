@@ -3,9 +3,7 @@ module Preflight
     attr_reader :subscriber, :subscription
 
     def initialize(params, campaign, request = nil, cookies = nil)
-      if params[:email].present?
-        @subscriber = Subscriber.find_or_initialize_by(email: params[:email])
-      end
+      @subscriber = Subscriber.find_or_initialize_by(email: params[:email])
 
       if request
         @subscriber.ip_address = request.remote_ip
