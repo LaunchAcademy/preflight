@@ -9,7 +9,8 @@ module Preflight
 
     has_many :referrals,
       class_name: "Preflight::CampaignSubscription",
-      foreign_key: "referrer_id"
+      foreign_key: "referrer_id",
+      dependent: :nullify
 
     has_many :shares,
       class_name: "Preflight::Share",
