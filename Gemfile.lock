@@ -3,7 +3,6 @@ PATH
   specs:
     preflight (0.0.1)
       better_date_picker
-      foundation-rails
       kaminari
       omniauth-crew-check
       rails (~> 4.2.0beta1)
@@ -78,9 +77,6 @@ GEM
       multipart-post (>= 1.2, < 3)
     ffi (1.9.3)
     formatador (0.2.5)
-    foundation-rails (5.4.2.0)
-      railties (>= 3.1.0)
-      sass (>= 3.2.0)
     globalid (0.2.3)
       activesupport (>= 4.1.0)
     guard (2.6.1)
@@ -198,7 +194,6 @@ GEM
       rspec-mocks (~> 3.0.0)
       rspec-support (~> 3.0.0)
     rspec-support (3.0.4)
-    sass (3.4.2)
     sawyer (0.5.5)
       addressable (~> 2.3.5)
       faraday (~> 0.8, < 0.10)

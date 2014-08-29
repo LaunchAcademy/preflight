@@ -2,7 +2,6 @@ require 'omniauth/builder'
 require 'omniauth-crew-check'
 require 'slugged'
 require 'simple_form'
-require 'foundation-rails'
 require 'kaminari'
 
 require 'preflight/responder'
@@ -15,6 +14,7 @@ module Preflight
     isolate_namespace Preflight
 
     config.autoload_paths << "#{config.root}/app/view_objects"
+    config.assets.paths << config.root.join('vendor', 'assets', 'components')
 
     config.generators do |g|
       g.test_framework      :rspec,        :fixture => false
