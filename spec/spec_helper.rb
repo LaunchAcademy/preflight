@@ -16,6 +16,7 @@
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 
 require 'preflight'
+require 'mocha/setup'
 
 RSpec.configure do |config|
 # The settings below are suggested to provide a good initial experience
@@ -78,4 +79,5 @@ RSpec.configure do |config|
     mocks.verify_partial_doubles = true
   end
 =end
+  config.mock_with :mocha
 end

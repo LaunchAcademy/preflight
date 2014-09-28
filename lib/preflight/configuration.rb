@@ -6,14 +6,20 @@ module Preflight
     attr_accessor :twitter_handle
     attr_accessor :linked_in_api_key
     attr_accessor :admin_teams
+    attr_reader :subscription_listeners
 
     def initialize(&block)
       self.admin_teams = []
+      @subscription_listeners = []
       update(&block) if block_given?
     end
 
     def update(&block)
       block.call(self)
+    end
+
+    def add_subscription_listener(the_proc)
+      @subscription_listeners << the_proc
     end
   end
 end

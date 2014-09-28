@@ -64,6 +64,17 @@ describe Preflight::Configuration do
     end
   end
 
+  it 'has a after_subscription proc' do
+    with_temp_config do
+      the_proc = ->(s){puts 'yo' }
+      Preflight.configure do |config|
+        config.add_subscription_listener the_proc
+      end
+    end
+
+    expect(Preflight.configuration.subscription_listeners).to_not be_empty
+  end
+
   def with_temp_config(&block)
     old_config = Preflight.configuration.dup
     block.call

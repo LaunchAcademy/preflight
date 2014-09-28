@@ -28,6 +28,10 @@ module Preflight
       subscription.tap do |sub|
         sub.save!
 
+        Preflight.configuration.subscription_listeners.each do |listener|
+          listener.call(subscription)
+        end
+
         if referral
           Preflight::RewardDispenserJob.enqueue(referrer.id)
         end
