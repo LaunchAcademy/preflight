@@ -12,6 +12,7 @@ gemspec
 
 # To use debugger
 # gem 'debugger'
+gem 'thor'
 
 group :development do
   gem 'pry'
