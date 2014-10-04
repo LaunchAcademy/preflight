@@ -6,8 +6,9 @@ module Preflight
     attr_accessor :twitter_handle
     attr_accessor :linked_in_api_key
     attr_accessor :admin_teams
+    attr_accessor :post_subscription_url
+    
     attr_reader :subscription_listeners
-    attr_reader :post_subscription_url
 
     def initialize(&block)
       self.admin_teams = []
