@@ -17,14 +17,22 @@ module Preflight
       opt_in.save
       @subscriber = opt_in.subscriber
       redir_path = root_path
-      if sub = opt_in.subscription
-        redir_path = sharing_center_path
-      end
 
-      respond_with(@subscriber, location: redir_path)
+      respond_with(@subscriber, location: redirection_url(opt_in.subscription))
     end
 
     protected
+    def redirection_url(sub)
+      if Preflight.configuration.post_subscription_url
+        Preflight.configuration.post_subscription_url.call
+      else
+        if sub
+          redir_path = sharing_center_path
+        else
+          root_path
+        end
+      end
+    end
     def check_subscription
       if cookies.signed[Preflight.subscription_cookie_key]
         redirect_to sharing_center_path
