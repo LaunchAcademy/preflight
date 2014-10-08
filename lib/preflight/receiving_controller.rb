@@ -7,6 +7,19 @@ module Preflight
     end
 
     protected
+    def current_subscription
+      if !@current_subscription
+        subscription_id = cookies.signed[Preflight.subscription_cookie_key]
+        if subscription_id.present?
+          @current_subscription = Preflight::CampaignSubscription.find_by(
+            id: subscription_id
+          )
+        end
+      end
+
+      @current_subscription
+    end
+
     def receive_referral
       if !referring_subscription.nil?
         cookies.signed[Preflight.referring_cookie_key] = referral_cookie_values
