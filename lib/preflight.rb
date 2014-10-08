@@ -30,4 +30,8 @@ module Preflight
   def self.subscription_cookie_key
     :p_subscription_id
   end
+
+  def self.email_regexp
+    /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/
+  end
 end

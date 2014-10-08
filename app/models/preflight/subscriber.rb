@@ -12,7 +12,7 @@ module Preflight
     #email regexp courtesy of devise:
     #https://github.com/plataformatec/devise/blob/master/lib/devise.rb#L123
     validates :email, uniqueness: true,
-      format: /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/
+      format: Preflight.email_regexp
 
     def subscribe_to!(campaign, referrer = nil)
       subscription = subscriptions.find_or_initialize_by({
