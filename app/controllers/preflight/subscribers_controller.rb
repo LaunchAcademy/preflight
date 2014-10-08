@@ -24,7 +24,8 @@ module Preflight
     protected
     def redirection_url(sub)
       if Preflight.configuration.post_subscription_url
-        Preflight.configuration.post_subscription_url.call
+        the_proc = Preflight.configuration.post_subscription_url
+        instance_eval(&the_proc)
       else
         if sub
           redir_path = sharing_center_path
