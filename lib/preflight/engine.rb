@@ -7,7 +7,6 @@ require 'kaminari'
 require 'preflight/responder'
 require 'preflight/receiving_controller'
 
-OmniAuth.config.path_prefix = '/preflight/auth'
 
 module Preflight
   class Engine < ::Rails::Engine
@@ -23,6 +22,7 @@ module Preflight
     end
 
     initializer 'omniauth' do |app|
+      OmniAuth.config.path_prefix ||= '/preflight/auth'
       app.middleware.use OmniAuth::Builder do
         provider :crew_check,
           Preflight.configuration.github_key,
