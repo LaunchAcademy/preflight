@@ -42,5 +42,13 @@ module Preflight
     initializer "precompile zero clipboard" do |app|
       app.config.assets.precompile += %w(ZeroClipboard.swf)
     end
+
+    initializer "append_migrations" do |app|
+      unless app.root.to_s.match(root.to_s)
+        config.paths["db/migrate"].expanded.each do |expaned_path|
+          app.config.paths["db/migrate"] << expaned_path
+        end
+      end
+    end
   end
 end
